@@ -1685,7 +1685,8 @@ finding the bug.\label{tab:montecarloresults}}{
 
 \subsection{Search Space Growth with Variable Bounding}
 We performed experiments to study the growth of search space using
-variable bounding. We wrote a small toy program which spawns 11 threads
+variable bounding. We wrote a small toy program as shown in
+figure~\ref{fig:account-prog} which spawns 11 threads
 and in total has 23 variables and, ran it with the implementation of
 variable bounding in CHESS.
 Figure~\ref{fig:search} shows the growth of
@@ -1698,6 +1699,46 @@ search space with the increasing values of context bound and variable bound.
   \label{fig:search} This figure
   depicts the growth of search space with the increaseing values of ($c$,$v$).}
 \end{center}
+\end{figure}
+
+\begin{figure}[htb]
+  {\tt
+  class Account \{\\
+  \begin{tabular}{@{}p{0.4cm}@{}l}
+  & int balance; \\
+  & Account(int a) \{ \\
+  & \ \ balance = a; \\
+  & \} \\
+  & $\dots$ \\
+  & void synchronized Withdraw(int a) \{ \\
+  & \ \ balance -= a; \\
+  & \} \\
+  & \\
+  & void synchronized Deposit(int a) \{ \\
+  & \ \ balance += a; \\
+  & \} \\
+  & \\
+  & void main() \{ \\
+  & \ \ $\dots$ \\
+  & \ \ for(i in 0 to 10) \{ \\
+  & \ \ \ \ account[i] = new Account(10); \\
+  & \ \ \ \ threads[i] = new Thread(account => \{(account as Account).Withdraw(2);\});\\
+  & \ \ \} \\
+
+  & \ \ for(i in 0 to 10) \\
+  & \ \ \ \ threads[i].Start(account[i]); \\
+
+  & \ \ for(i in 0 to 10) \\
+  & \ \ \ \ account[i].Deposit(1); \\
+  & \ \ $\dots$ \\
+  & \} \\
+  \end{tabular}
+  \}\\
+  }
+  \caption{\label{fig:account-prog}
+  Small C\# program which is used to study the variation of search
+  space at different values of $c$ and $v$ using variable bounding in
+  DB-CHESS.}
 \end{figure}
 
 
