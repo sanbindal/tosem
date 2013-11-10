@@ -1096,7 +1096,10 @@ T_{n-1},T_{n},T_{i}\}$ and $\{T_{n},T_{n-1},T_{n-2},\dots,T_{i+1},
 T_{i-1},\dots,T_{2},T_{1},T_{i}\}$ where $i=1$ to $n$.
 For any general $t$-thread bug, we choose $t-2$ threads out of $n$
 threads, arrange $t-2$ threads in $(t-2)!$ ways and $n-t-2$ threads
-in increasing and decreasing order. Using the same argument as described in section~\ref{sec:threadbound-random} for context bound $c>0$, we can prove that $2\binom{n+c}{t+c-2}(t-2)!$
+in increasing and decreasing order. Using the same argument as described in
+section~\ref{sec:threadbound-random} for context bound $c>0$ of considering
+a pre-empted thread as two distinct threads,
+we can prove that $2\binom{n+c}{t+c-2}(t-2)!$
 permutations are required to uncover all $t$-thread bugs at context
 bound $c$.
 

@@ -32,12 +32,210 @@
 \ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
 \ifx \showURL      \undefined \def \showURL       #1{#1}          \fi
 
+\bibitem[\protect\citeauthoryear{Apt, Francez, and Katz}{Apt et~al\mbox{.}}{}]%
+        {apt:fairness:popl87}
+{K.~R. Apt}, {N. Francez}, {and} {S. Katz}.
+\newblock \showarticletitle{Appraising fairness in distributed languages}. In
+  {\em POPL '87}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bessey, Block, Chelf, Chou, Fulton, Hallem,
+  Henri-Gros, Kamsky, McPeak, and Engler}{Bessey et~al\mbox{.}}{2010}]%
+        {bessey:coverity:acmcomm10}
+{Al Bessey}, {Ken Block}, {Ben Chelf}, {Andy Chou}, {Bryan Fulton}, {Seth
+  Hallem}, {Charles Henri-Gros}, {Asya Kamsky}, {Scott McPeak}, {and} {Dawson
+  Engler}. 2010.
+\newblock \showarticletitle{A few billion lines of code later: using static
+  analysis to find bugs in the real world}.
+\newblock {\em Commun. ACM\/}  {53} (February 2010), 66--75.
+\newblock
+Issue 2.
+\showISSN{0001-0782}
+\showURL{%
+\url{http://doi.acm.org/10.1145/1646353.1646374}}
+
+
+\bibitem[\protect\citeauthoryear{Bruening and Chapin}{Bruening and
+  Chapin}{2000}]%
+        {bruening:systematic_testing}
+{Derek Bruening} {and} {John Chapin}. 2000.
+\newblock {\em Systematic Testing of Multithreaded Programs}.
+\newblock {T}echnical {R}eport. LCS-TM-607, MIT/LCS.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Burckhardt, Kothari, Musuvathi, and
+  Nagarakatte}{Burckhardt et~al\mbox{.}}{}]%
+        {pct}
+{Sebastian Burckhardt}, {Pravesh Kothari}, {Madanlal Musuvathi}, {and} {Santosh
+  Nagarakatte}.
+\newblock \showarticletitle{A randomized scheduler with probabilistic
+  guarantees of finding bugs}. In {\em ASPLOS '10}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Chiba}{Chiba}{}]%
+        {chiba:javassist:oopsla98}
+{Shigeru Chiba}.
+\newblock \showarticletitle{Javassist --- a reflection-based programming wizard
+  for Java}. In {\em OOPSLA '98}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Emmi, Qadeer, and Rakamaric}{Emmi
+  et~al\mbox{.}}{2011}]%
+        {EmmiQR11}
+{Michael Emmi}, {Shaz Qadeer}, {and} {Zvonimir Rakamaric}. 2011.
+\newblock \showarticletitle{Delay-bounded scheduling}. In {\em POPL}. 411--422.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Eytani, Havelund, Stoller, and Ur}{Eytani
+  et~al\mbox{.}}{2007}]%
+        {eytani:concbench:jconcom07}
+{Yaniv Eytani}, {Klaus Havelund}, {Scott~D. Stoller}, {and} {Shmuel Ur}. 2007.
+\newblock \showarticletitle{Toward a Framework and Benchmark for Testing Tools
+  for Multi-Threaded Programs}.
+\newblock {\em Concurrency and Computation: Practice \& Experience\/} {19}, 3
+  (2007), 267--279.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Godefroid}{Godefroid}{1996}]%
+        {godefroid:verisoft:book96}
+{Patrice Godefroid}. 1996.
+\newblock {\em Partial-Order Methods for the Verification of Concurrent
+  Systems: An Approach to the State-Explosion Problem}.
+\newblock Springer-Verlag New York, Inc., Secaucus, NJ, USA.
+\newblock
+\showISBNx{3540607617}
+
+
+\bibitem[\protect\citeauthoryear{Joshi, Park, Sen, and Naik}{Joshi
+  et~al\mbox{.}}{}]%
+        {joshi:deadlockfuzzer:pldi09}
+{Pallavi Joshi}, {Chang-Seo Park}, {Koushik Sen}, {and} {Mayur Naik}.
+\newblock \showarticletitle{A randomized dynamic program analysis technique for
+  detecting real deadlocks}. In {\em PLDI '09}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Lhot\'{a}k and Hendren}{Lhot\'{a}k and
+  Hendren}{2008}]%
+        {lhotak:alias:tosem08}
+{Ond\v{r}ej Lhot\'{a}k} {and} {Laurie Hendren}. 2008.
+\newblock \showarticletitle{Evaluating the benefits of context-sensitive
+  points-to analysis using a BDD-based implementation}.
+\newblock {\em ACM Trans. Softw. Eng. Methodol.\/}  {18}, Article 3 (October
+  2008), 53 pages.
+\newblock
+Issue 1.
+\showISSN{1049-331X}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1391984.1391987}}
+
+
+\bibitem[\protect\citeauthoryear{Lu, Park, Seo, and Zhou}{Lu
+  et~al\mbox{.}}{a}]%
+        {lu:learning_from_mistakes:asplos08}
+{Shan Lu}, {Soyeon Park}, {Eunsoo Seo}, {and} {Yuanyuan Zhou}.
+\newblock \showarticletitle{Learning from mistakes: a comprehensive study on
+  real world concurrency bug characteristics}. In {\em ASPLOS '08}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Lu, Tucek, Qin, and Zhou}{Lu
+  et~al\mbox{.}}{b}]%
+        {lu:avio:asplos06}
+{Shan Lu}, {Joseph Tucek}, {Feng Qin}, {and} {Yuanyuan Zhou}.
+\newblock \showarticletitle{AVIO: detecting atomicity violations via access
+  interleaving invariants}. In {\em ASPLOS '06}.
+\newblock
+
+
 \bibitem[\protect\citeauthoryear{Musuvathi and Qadeer}{Musuvathi and
   Qadeer}{}]%
         {musuvathi:icb:pldi07}
 {Madanlal Musuvathi} {and} {Shaz Qadeer}.
 \newblock \showarticletitle{Iterative context bounding for systematic testing
   of multithreaded programs}. In {\em PLDI '07}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Musuvathi, Qadeer, Ball, Basler, Nainar, and
+  Neamtiu}{Musuvathi et~al\mbox{.}}{}]%
+        {chess}
+{Madanlal Musuvathi}, {Shaz Qadeer}, {Thomas Ball}, {G\\E9rard Basler},
+  {Piramanayagam~Arumuga Nainar}, {and} {Iulian Neamtiu}.
+\newblock In {\em OSDI '08}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Naik, Aiken, and Whaley}{Naik
+  et~al\mbox{.}}{}]%
+        {naik:chord:pldi06}
+{Mayur Naik}, {Alex Aiken}, {and} {John Whaley}.
+\newblock \showarticletitle{Effective static race detection for Java}. In {\em
+  PLDI '06}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Park, Lu, and Zhou}{Park et~al\mbox{.}}{}]%
+        {ctrigger}
+{Soyeon Park}, {Shan Lu}, {and} {Yuanyuan Zhou}.
+\newblock \showarticletitle{{CTrigger}: Exposing atomicity violation bugs from
+  their hiding places}. In {\em ASPLOS '09}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Savage, Burrows, Nelson, Sobalvarro, and
+  Anderson}{Savage et~al\mbox{.}}{1997}]%
+        {savage:eraser:tcs97}
+{Stefan Savage}, {Michael Burrows}, {Greg Nelson}, {Patrick Sobalvarro}, {and}
+  {Thomas Anderson}. 1997.
+\newblock \showarticletitle{Eraser: a dynamic data race detector for
+  multithreaded programs}.
+\newblock {\em ACM Trans. Comput. Syst.\/}  {15} (November 1997), 391--411.
+\newblock
+Issue 4.
+\showISSN{0734-2071}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/265924.265927}}
+
+
+\bibitem[\protect\citeauthoryear{Sen}{Sen}{}]%
+        {sen:racefuzzer:pldi08}
+{Koushik Sen}.
+\newblock \showarticletitle{Race directed random testing of concurrent
+  programs}. In {\em PLDI '08}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Stoller}{Stoller}{2000}]%
+        {stoller:modelcheck:spin00}
+{Scott~D. Stoller}. 2000.
+\newblock \showarticletitle{Model-Checking Multi-threaded Distributed Java
+  Programs}. In {\em SPIN Workshop on Model Checking and Software
+  Verification}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Whaley and Lam}{Whaley and Lam}{}]%
+        {whaley:alias:pldi04}
+{John Whaley} {and} {Monica~S. Lam}.
+\newblock \showarticletitle{Cloning-based context-sensitive pointer alias
+  analysis using binary decision diagrams}. In {\em PLDI '04}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Xiong, Park, Zhang, Zhou, and Ma}{Xiong
+  et~al\mbox{.}}{}]%
+        {xiong:adhoc:osdi10}
+{Weiwei Xiong}, {Soyeon Park}, {Jiaqi Zhang}, {Yuanyuan Zhou}, {and} {Zhiqiang
+  Ma}.
+\newblock \showarticletitle{Ad Hoc Synchronization Considered Harmful}. In {\em
+  OSDI '10}.
 \newblock
 
 
