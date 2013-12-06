@@ -230,6 +230,20 @@ Issue 1.
 \newblock
 
 
+\bibitem[\protect\citeauthoryear{Musuvathi and Qadeer}{Musuvathi and
+  Qadeer}{2007}]%
+        {musuvathi:icb:pldi07}
+{Madanlal Musuvathi} {and} {Shaz Qadeer}. 2007.
+\newblock \showarticletitle{Iterative Context Bounding for Systematic Testing
+  of Multithreaded Programs}. In {\em Proceedings of the 2007 ACM SIGPLAN
+  Conference on Programming Language Design and Implementation} {\em (PLDI
+  '07)}. ACM, New York, NY, USA, 446--455.
+\newblock
+\showISBNx{978-1-59593-633-2}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1250734.1250785}}
+
+
 \bibitem[\protect\citeauthoryear{Musuvathi, Qadeer, Ball, Basler, Nainar, and
   Neamtiu}{Musuvathi et~al\mbox{.}}{2008}]%
         {chess}
