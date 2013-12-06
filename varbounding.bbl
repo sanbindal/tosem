@@ -213,12 +213,17 @@ Issue 1.
 
 
 \bibitem[\protect\citeauthoryear{Lu, Tucek, Qin, and Zhou}{Lu
-  et~al\mbox{.}}{}]%
+  et~al\mbox{.}}{2006}]%
         {lu:avio:asplos06}
-{Shan Lu}, {Joseph Tucek}, {Feng Qin}, {and} {Yuanyuan Zhou}.
-\newblock \showarticletitle{AVIO: detecting atomicity violations via access
-  interleaving invariants}. In {\em ASPLOS '06}.
+{Shan Lu}, {Joseph Tucek}, {Feng Qin}, {and} {Yuanyuan Zhou}. 2006.
+\newblock \showarticletitle{AVIO: Detecting Atomicity Violations via Access
+  Interleaving Invariants}. In {\em Proceedings of the 12th International
+  Conference on Architectural Support for Programming Languages and Operating
+  Systems} {\em (ASPLOS XII)}. ACM, New York, NY, USA, 37--48.
 \newblock
+\showISBNx{1-59593-451-0}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1168857.1168864}}
 
 
 \bibitem[\protect\citeauthoryear{Marino, Musuvathi, and Narayanasamy}{Marino
