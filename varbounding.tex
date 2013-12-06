@@ -20,6 +20,7 @@
 %\usepackage{program}
 \usepackage{algorithm}
 \usepackage{url}
+\usepackage{cite}
 %\usepackage{varbounding}
 %\numberwithin{algorithm}{chapter}
 %\NumberProgramstrue
@@ -74,9 +75,9 @@
 % Title portion
 \title{Variable and Thread Bounding for Systematic Testing of Multithreaded Programs}
 \author{SANDEEP BINDAL
-\affil{Indian Institute of Technology Delhi, India}
+\affil{Indian Institute of Technology Delhi}
 SORAV BANSAL
-\affil{Indian Institute of Technology Delhi, India}
+\affil{Indian Institute of Technology Delhi}
 AKASH LAL
 \affil{Microsoft Research India}}
 % NOTE! Affiliations placed here should be for the institution where the
@@ -111,7 +112,7 @@ AKASH LAL
   variable access made by a program, which can be very expensive
   and severely limits the applicability of this
   approach. Previous work \cite{musuvathi:icb:pldi07}, \cite{pct} has
-  avoided this problem by interposing only on
+  aof voided this problem by interposing only on
   synchronization operations (and ignoring other variable accesses). We demonstrate
   that by using variable bounding ($v$) and a
   static imprecise alias analysis, we can interpose on all variable
@@ -1181,9 +1182,9 @@ The instrumented
 test program is linked with a RankChecker library that implements a scheduler
 to dictate the thread interleavings. We
 implemented static alias analysis using BDDs, similar to that used
-in \cite{naik:chord:pldi06, whaley:alias:pldi04}.
+in \cite{naik:chord:pldi06}\cite{whaley:alias:pldi04}.
 Like previous approaches on systematic and probabilistic
-testing~\cite{chess, pct}, the program under test is required
+testing~\cite{chess} \cite{pct}, the program under test is required
 to be terminating, so that it can be run repeatedly to explore
 different schedules. It is usually straightforward to convert a non-terminating
 program to a terminating program.
@@ -1536,7 +1537,7 @@ sometimes slower than the instrumented run; this happens due to the
 overhead of process creation in the native run which does not
 exist in our instrumented run.). This is a significant improvement over
 previous work, where only synchronization operations have been considered as
-potential pre-emption points~\cite{chess,pct}.
+potential pre-emption points~\cite{chess}\cite{pct}.
 \begin{table}
 \begin{center}
 \scriptsize
@@ -1804,10 +1805,10 @@ search space with the increasing values of context bound and variable bound.
 \section{RELATED WORK}
 \label{sec:relwork}
 There is a large body of work on
-static~\cite{bessey:coverity:acmcomm10, naik:chord:pldi06} and
-dynamic~\cite{savage:eraser:tcs97, elmas:goldilocks:pldi07,
-joshi:deadlockfuzzer:pldi09, lu:avio:asplos06,
-ctrigger} techniques to uncover
+static~\cite{bessey:coverity:acmcomm10}\cite{naik:chord:pldi06} and
+dynamic~\cite{savage:eraser:tcs97}\cite{elmas:goldilocks:pldi07}
+\cite{joshi:deadlockfuzzer:pldi09}\cite{lu:avio:asplos06}\cite{ctrigger}
+techniques to uncover
 concurrency bugs. While many of these
 techniques are very effective and have uncovered a variety of
 previously-unknown bugs in well-tested software, the current dominant
@@ -1833,9 +1834,8 @@ this (apart from plain inertia):
 \end{enumerate}
 
 Model checking approaches
-\cite{bruening:systematic_testing, chess,
-godefroid:verisoft:book96, godefroid:verisoft:popl97,
-stoller:modelcheck:spin00, khurshid:pathfinder:tacas03} are
+\cite{bruening:systematic_testing}\cite{chess}\cite{godefroid:verisoft:book96}\cite{godefroid:verisoft:popl97}\cite{stoller:modelcheck:spin00}\cite{khurshid:pathfinder:tacas03}
+are
 closer
 to the familiar idiom of testing. Our
 model checker targets all types
@@ -1870,7 +1870,7 @@ Even if we assume a precise and efficient data-race detector, this approach
 still overlooks ``adhoc'' synchronization that do not involve
 known synchronization primitives~\cite{xiong:adhoc:osdi10}.
 
-VeriSoft~\cite{godefroid:verisoft:book96, godefroid:verisoft:popl97, godefroid:verisoft:issta98} also uses an
+VeriSoft~\cite{godefroid:verisoft:book96}\cite{godefroid:verisoft:popl97}\cite{godefroid:verisoft:issta98} also uses an
 exploration strategy to model-check ``distributed'' systems
 using a {\em state-less search} (i.e., storage of previously-visited
 states are not required). Verisoft uses partial-order
@@ -1881,10 +1881,9 @@ programs. We believe that variable and thread bounding ideas are equally relevan
 to these model checking approaches as well.
 
 Our work is complementary to
-race-detection tools~\cite{savage:eraser:tcs97, naik:chord:pldi06,
-sen:racefuzzer:pldi08, yu:racetrack:sosp05, marino:literace:pldi09},
+race-detection tools~\cite{savage:eraser:tcs97}\cite{naik:chord:pldi06}\cite{sen:racefuzzer:pldi08}\cite{yu:racetrack:sosp05}\cite{marino:literace:pldi09},
 deadlock-detection tools~\cite{joshi:deadlockfuzzer:pldi09}, and
-atomicity-violation detection tools~\cite{lu:avio:asplos06, ctrigger}.
+atomicity-violation detection tools~\cite{lu:avio:asplos06}\cite{ctrigger}.
 We do not focus on a
 particular
 class of bugs, but rather drive a model checker into exploring

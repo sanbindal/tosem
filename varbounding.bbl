@@ -83,6 +83,15 @@ Issue 2.
 \newblock
 
 
+\bibitem[\protect\citeauthoryear{Elmas, Qadeer, and Tasiran}{Elmas
+  et~al\mbox{.}}{}]%
+        {elmas:goldilocks:pldi07}
+{Tayfun Elmas}, {Shaz Qadeer}, {and} {Serdar Tasiran}.
+\newblock \showarticletitle{Goldilocks: a race and transaction-aware java
+  runtime}. In {\em PLDI '07}.
+\newblock
+
+
 \bibitem[\protect\citeauthoryear{Emmi, Qadeer, and Rakamaric}{Emmi
   et~al\mbox{.}}{2011}]%
         {EmmiQR11}
@@ -102,6 +111,14 @@ Issue 2.
 \newblock
 
 
+\bibitem[\protect\citeauthoryear{Godefroid}{Godefroid}{}]%
+        {godefroid:verisoft:popl97}
+{Patrice Godefroid}.
+\newblock \showarticletitle{Model checking for programming languages using
+  {V}eri{S}oft}. In {\em POPL '97}.
+\newblock
+
+
 \bibitem[\protect\citeauthoryear{Godefroid}{Godefroid}{1996}]%
         {godefroid:verisoft:book96}
 {Patrice Godefroid}. 1996.
@@ -112,12 +129,31 @@ Issue 2.
 \showISBNx{3540607617}
 
 
+\bibitem[\protect\citeauthoryear{Godefroid, Hanmer, and Jagadeesan}{Godefroid
+  et~al\mbox{.}}{}]%
+        {godefroid:verisoft:issta98}
+{Patrice Godefroid}, {Robert~S. Hanmer}, {and} {Lalita~Jategaonkar Jagadeesan}.
+\newblock \showarticletitle{Model checking without a model: an analysis of the
+  heart-beat monitor of a telephone switch using {V}eri{S}oft}. In {\em ISSTA
+  '98}.
+\newblock
+
+
 \bibitem[\protect\citeauthoryear{Joshi, Park, Sen, and Naik}{Joshi
   et~al\mbox{.}}{}]%
         {joshi:deadlockfuzzer:pldi09}
 {Pallavi Joshi}, {Chang-Seo Park}, {Koushik Sen}, {and} {Mayur Naik}.
 \newblock \showarticletitle{A randomized dynamic program analysis technique for
   detecting real deadlocks}. In {\em PLDI '09}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Khurshid, P\u{a}s\u{a}reanu, and
+  Visser}{Khurshid et~al\mbox{.}}{}]%
+        {khurshid:pathfinder:tacas03}
+{Sarfraz Khurshid}, {Corina~S. P\u{a}s\u{a}reanu}, {and} {Willem Visser}.
+\newblock \showarticletitle{Generalized symbolic execution for model checking
+  and testing}. In {\em TACAS'03}.
 \newblock
 
 
@@ -151,6 +187,15 @@ Issue 1.
 {Shan Lu}, {Joseph Tucek}, {Feng Qin}, {and} {Yuanyuan Zhou}.
 \newblock \showarticletitle{AVIO: detecting atomicity violations via access
   interleaving invariants}. In {\em ASPLOS '06}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Marino, Musuvathi, and Narayanasamy}{Marino
+  et~al\mbox{.}}{}]%
+        {marino:literace:pldi09}
+{Daniel Marino}, {Madanlal Musuvathi}, {and} {Satish Narayanasamy}.
+\newblock \showarticletitle{LiteRace: effective sampling for lightweight
+  data-race detection}. In {\em PLDI '09}.
 \newblock
 
 
@@ -236,6 +281,15 @@ Issue 4.
   Ma}.
 \newblock \showarticletitle{Ad Hoc Synchronization Considered Harmful}. In {\em
   OSDI '10}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Yu, Rodeheffer, and Chen}{Yu
+  et~al\mbox{.}}{}]%
+        {yu:racetrack:sosp05}
+{Yuan Yu}, {Tom Rodeheffer}, {and} {Wei Chen}.
+\newblock \showarticletitle{RaceTrack: efficient detection of data race
+  conditions via adaptive tracking}. In {\em SOSP '05}.
 \newblock
 
 
