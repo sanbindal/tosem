@@ -32,11 +32,12 @@
 \ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
 \ifx \showURL      \undefined \def \showURL       #1{#1}          \fi
 
-\bibitem[\protect\citeauthoryear{Apt, Francez, and Katz}{Apt et~al\mbox{.}}{}]%
-        {apt:fairness:popl87}
-{K.~R. Apt}, {N. Francez}, {and} {S. Katz}.
-\newblock \showarticletitle{Appraising fairness in distributed languages}. In
-  {\em POPL '87}.
+\bibitem[\protect\citeauthoryear{Andersen}{Andersen}{1994}]%
+        {andersen94programanalysis}
+{Lars~Ole Andersen}. 1994.
+\newblock {\em Program Analysis and Specialization for the C Programming
+  Language}.
+\newblock {T}echnical {R}eport.
 \newblock
 
 
@@ -66,38 +67,48 @@ Issue 2.
 
 
 \bibitem[\protect\citeauthoryear{Burckhardt, Kothari, Musuvathi, and
-  Nagarakatte}{Burckhardt et~al\mbox{.}}{}]%
+  Nagarakatte}{Burckhardt et~al\mbox{.}}{2010}]%
         {pct}
 {Sebastian Burckhardt}, {Pravesh Kothari}, {Madanlal Musuvathi}, {and} {Santosh
-  Nagarakatte}.
-\newblock \showarticletitle{A randomized scheduler with probabilistic
-  guarantees of finding bugs}. In {\em ASPLOS '10}.
+  Nagarakatte}. 2010.
+\newblock \showarticletitle{A Randomized Scheduler with Probabilistic
+  Guarantees of Finding Bugs}. In {\em Proceedings of the Fifteenth Edition of
+  ASPLOS on Architectural Support for Programming Languages and Operating
+  Systems} {\em (ASPLOS XV)}. ACM, New York, NY, USA, 167--178.
 \newblock
+\showISBNx{978-1-60558-839-1}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1736020.1736040}}
 
 
-\bibitem[\protect\citeauthoryear{Chiba}{Chiba}{}]%
+\bibitem[\protect\citeauthoryear{Chiba}{Chiba}{1998}]%
         {chiba:javassist:oopsla98}
-{Shigeru Chiba}.
-\newblock \showarticletitle{Javassist --- a reflection-based programming wizard
-  for Java}. In {\em OOPSLA '98}.
+{Shigeru Chiba}. 1998.
+\newblock \showarticletitle{Javassist - A Reflection-based Programming Wizard
+  for Java}. In {\em International Business Machines Corp}.
 \newblock
 
 
 \bibitem[\protect\citeauthoryear{Elmas, Qadeer, and Tasiran}{Elmas
-  et~al\mbox{.}}{}]%
+  et~al\mbox{.}}{2010}]%
         {elmas:goldilocks:pldi07}
-{Tayfun Elmas}, {Shaz Qadeer}, {and} {Serdar Tasiran}.
-\newblock \showarticletitle{Goldilocks: a race and transaction-aware java
-  runtime}. In {\em PLDI '07}.
+{Tayfun Elmas}, {Shaz Qadeer}, {and} {Serdar Tasiran}. 2010.
+\newblock \showarticletitle{Goldilocks: a race-aware Java runtime}.
+\newblock {\em Commun. ACM\/} {53}, 11 (2010), 85--92.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Emmi, Qadeer, and Rakamaric}{Emmi
+\bibitem[\protect\citeauthoryear{Emmi, Qadeer, and Rakamari\'{c}}{Emmi
   et~al\mbox{.}}{2011}]%
         {EmmiQR11}
-{Michael Emmi}, {Shaz Qadeer}, {and} {Zvonimir Rakamaric}. 2011.
-\newblock \showarticletitle{Delay-bounded scheduling}. In {\em POPL}. 411--422.
+{Michael Emmi}, {Shaz Qadeer}, {and} {Zvonimir Rakamari\'{c}}. 2011.
+\newblock \showarticletitle{Delay-bounded Scheduling}. In {\em Proceedings of
+  the 38th Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming
+  Languages} {\em (POPL '11)}. ACM, New York, NY, USA, 411--422.
 \newblock
+\showISBNx{978-1-4503-0490-0}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1926385.1926432}}
 
 
 \bibitem[\protect\citeauthoryear{Eytani, Havelund, Stoller, and Ur}{Eytani
@@ -111,14 +122,6 @@ Issue 2.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Godefroid}{Godefroid}{}]%
-        {godefroid:verisoft:popl97}
-{Patrice Godefroid}.
-\newblock \showarticletitle{Model checking for programming languages using
-  {V}eri{S}oft}. In {\em POPL '97}.
-\newblock
-
-
 \bibitem[\protect\citeauthoryear{Godefroid}{Godefroid}{1996}]%
         {godefroid:verisoft:book96}
 {Patrice Godefroid}. 1996.
@@ -129,32 +132,55 @@ Issue 2.
 \showISBNx{3540607617}
 
 
+\bibitem[\protect\citeauthoryear{Godefroid}{Godefroid}{1997}]%
+        {godefroid:verisoft:popl97}
+{Patrice Godefroid}. 1997.
+\newblock \showarticletitle{Model Checking for Programming Languages Using
+  VeriSoft}. In {\em Proceedings of the 24th ACM SIGPLAN-SIGACT Symposium on
+  Principles of Programming Languages} {\em (POPL '97)}. ACM, New York, NY,
+  USA, 174--186.
+\newblock
+\showISBNx{0-89791-853-3}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/263699.263717}}
+
+
 \bibitem[\protect\citeauthoryear{Godefroid, Hanmer, and Jagadeesan}{Godefroid
-  et~al\mbox{.}}{}]%
+  et~al\mbox{.}}{1998}]%
         {godefroid:verisoft:issta98}
 {Patrice Godefroid}, {Robert~S. Hanmer}, {and} {Lalita~Jategaonkar Jagadeesan}.
-\newblock \showarticletitle{Model checking without a model: an analysis of the
-  heart-beat monitor of a telephone switch using {V}eri{S}oft}. In {\em ISSTA
-  '98}.
+  1998.
+\newblock \showarticletitle{Model Checking Without a Model: An Analysis of the
+  Heart-beat Monitor of a Telephone Switch Using VeriSoft}. In {\em Proceedings
+  of the 1998 ACM SIGSOFT International Symposium on Software Testing and
+  Analysis} {\em (ISSTA '98)}. ACM, New York, NY, USA, 124--133.
 \newblock
+\showISBNx{0-89791-971-8}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/271771.271800}}
 
 
 \bibitem[\protect\citeauthoryear{Joshi, Park, Sen, and Naik}{Joshi
-  et~al\mbox{.}}{}]%
+  et~al\mbox{.}}{2009}]%
         {joshi:deadlockfuzzer:pldi09}
-{Pallavi Joshi}, {Chang-Seo Park}, {Koushik Sen}, {and} {Mayur Naik}.
+{Pallavi Joshi}, {Chang-Seo Park}, {Koushik Sen}, {and} {Mayur Naik}. 2009.
 \newblock \showarticletitle{A randomized dynamic program analysis technique for
-  detecting real deadlocks}. In {\em PLDI '09}.
+  detecting real deadlocks}. In {\em PLDI}. 110--120.
 \newblock
 
 
 \bibitem[\protect\citeauthoryear{Khurshid, P\u{a}s\u{a}reanu, and
-  Visser}{Khurshid et~al\mbox{.}}{}]%
+  Visser}{Khurshid et~al\mbox{.}}{2003}]%
         {khurshid:pathfinder:tacas03}
-{Sarfraz Khurshid}, {Corina~S. P\u{a}s\u{a}reanu}, {and} {Willem Visser}.
-\newblock \showarticletitle{Generalized symbolic execution for model checking
-  and testing}. In {\em TACAS'03}.
+{Sarfraz Khurshid}, {Corina~S. P\u{a}s\u{a}reanu}, {and} {Willem Visser}. 2003.
+\newblock \showarticletitle{Generalized Symbolic Execution for Model Checking
+  and Testing}. In {\em Proceedings of the 9th International Conference on
+  Tools and Algorithms for the Construction and Analysis of Systems} {\em
+  (TACAS'03)}. Springer-Verlag, Berlin, Heidelberg, 553--568.
 \newblock
+\showISBNx{3-540-00898-5}
+\showURL{%
+\url{http://dl.acm.org/citation.cfm?id=1765871.1765924}}
 
 
 \bibitem[\protect\citeauthoryear{Lhot\'{a}k and Hendren}{Lhot\'{a}k and
@@ -173,16 +199,21 @@ Issue 1.
 
 
 \bibitem[\protect\citeauthoryear{Lu, Park, Seo, and Zhou}{Lu
-  et~al\mbox{.}}{a}]%
+  et~al\mbox{.}}{2008}]%
         {lu:learning_from_mistakes:asplos08}
-{Shan Lu}, {Soyeon Park}, {Eunsoo Seo}, {and} {Yuanyuan Zhou}.
-\newblock \showarticletitle{Learning from mistakes: a comprehensive study on
-  real world concurrency bug characteristics}. In {\em ASPLOS '08}.
+{Shan Lu}, {Soyeon Park}, {Eunsoo Seo}, {and} {Yuanyuan Zhou}. 2008.
+\newblock \showarticletitle{Learning from Mistakes: A Comprehensive Study on
+  Real World Concurrency Bug Characteristics}. In {\em Proceedings of the 13th
+  International Conference on Architectural Support for Programming Languages
+  and Operating Systems} {\em (ASPLOS XIII)}. ACM, New York, NY, USA, 329--339.
 \newblock
+\showISBNx{978-1-59593-958-6}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1346281.1346323}}
 
 
 \bibitem[\protect\citeauthoryear{Lu, Tucek, Qin, and Zhou}{Lu
-  et~al\mbox{.}}{b}]%
+  et~al\mbox{.}}{}]%
         {lu:avio:asplos06}
 {Shan Lu}, {Joseph Tucek}, {Feng Qin}, {and} {Yuanyuan Zhou}.
 \newblock \showarticletitle{AVIO: detecting atomicity violations via access
@@ -191,47 +222,49 @@ Issue 1.
 
 
 \bibitem[\protect\citeauthoryear{Marino, Musuvathi, and Narayanasamy}{Marino
-  et~al\mbox{.}}{}]%
+  et~al\mbox{.}}{2009}]%
         {marino:literace:pldi09}
-{Daniel Marino}, {Madanlal Musuvathi}, {and} {Satish Narayanasamy}.
+{Daniel Marino}, {Madanlal Musuvathi}, {and} {Satish Narayanasamy}. 2009.
 \newblock \showarticletitle{LiteRace: effective sampling for lightweight
-  data-race detection}. In {\em PLDI '09}.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Musuvathi and Qadeer}{Musuvathi and
-  Qadeer}{}]%
-        {musuvathi:icb:pldi07}
-{Madanlal Musuvathi} {and} {Shaz Qadeer}.
-\newblock \showarticletitle{Iterative context bounding for systematic testing
-  of multithreaded programs}. In {\em PLDI '07}.
+  data-race detection}. In {\em PLDI}. 134--143.
 \newblock
 
 
 \bibitem[\protect\citeauthoryear{Musuvathi, Qadeer, Ball, Basler, Nainar, and
-  Neamtiu}{Musuvathi et~al\mbox{.}}{}]%
+  Neamtiu}{Musuvathi et~al\mbox{.}}{2008}]%
         {chess}
-{Madanlal Musuvathi}, {Shaz Qadeer}, {Thomas Ball}, {G\\E9rard Basler},
-  {Piramanayagam~Arumuga Nainar}, {and} {Iulian Neamtiu}.
-\newblock In {\em OSDI '08}.
+{Madanlal Musuvathi}, {Shaz Qadeer}, {Thomas Ball}, {G{\'e}rard Basler},
+  {Piramanayagam~Arumuga Nainar}, {and} {Iulian Neamtiu}. 2008.
+\newblock \showarticletitle{Finding and Reproducing Heisenbugs in Concurrent
+  Programs}. In {\em OSDI}. 267--280.
 \newblock
 
 
 \bibitem[\protect\citeauthoryear{Naik, Aiken, and Whaley}{Naik
-  et~al\mbox{.}}{}]%
+  et~al\mbox{.}}{2006}]%
         {naik:chord:pldi06}
-{Mayur Naik}, {Alex Aiken}, {and} {John Whaley}.
-\newblock \showarticletitle{Effective static race detection for Java}. In {\em
-  PLDI '06}.
+{Mayur Naik}, {Alex Aiken}, {and} {John Whaley}. 2006.
+\newblock \showarticletitle{Effective Static Race Detection for Java}. In {\em
+  Proceedings of the 2006 ACM SIGPLAN Conference on Programming Language Design
+  and Implementation} {\em (PLDI '06)}. ACM, New York, NY, USA, 308--319.
 \newblock
+\showISBNx{1-59593-320-4}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1133981.1134018}}
 
 
-\bibitem[\protect\citeauthoryear{Park, Lu, and Zhou}{Park et~al\mbox{.}}{}]%
+\bibitem[\protect\citeauthoryear{Park, Lu, and Zhou}{Park
+  et~al\mbox{.}}{2009}]%
         {ctrigger}
-{Soyeon Park}, {Shan Lu}, {and} {Yuanyuan Zhou}.
-\newblock \showarticletitle{{CTrigger}: Exposing atomicity violation bugs from
-  their hiding places}. In {\em ASPLOS '09}.
+{Soyeon Park}, {Shan Lu}, {and} {Yuanyuan Zhou}. 2009.
+\newblock \showarticletitle{CTrigger: Exposing Atomicity Violation Bugs from
+  Their Hiding Places}. In {\em Proceedings of the 14th International
+  Conference on Architectural Support for Programming Languages and Operating
+  Systems} {\em (ASPLOS XIV)}. ACM, New York, NY, USA, 25--36.
 \newblock
+\showISBNx{978-1-60558-406-5}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1508244.1508249}}
 
 
 \bibitem[\protect\citeauthoryear{Savage, Burrows, Nelson, Sobalvarro, and
@@ -249,48 +282,61 @@ Issue 4.
 \url{http://dx.doi.org/10.1145/265924.265927}}
 
 
-\bibitem[\protect\citeauthoryear{Sen}{Sen}{}]%
+\bibitem[\protect\citeauthoryear{Sen}{Sen}{2008}]%
         {sen:racefuzzer:pldi08}
-{Koushik Sen}.
+{Koushik Sen}. 2008.
 \newblock \showarticletitle{Race directed random testing of concurrent
-  programs}. In {\em PLDI '08}.
+  programs}. In {\em PLDI}. 11--21.
 \newblock
 
 
 \bibitem[\protect\citeauthoryear{Stoller}{Stoller}{2000}]%
         {stoller:modelcheck:spin00}
 {Scott~D. Stoller}. 2000.
-\newblock \showarticletitle{Model-Checking Multi-threaded Distributed Java
-  Programs}. In {\em SPIN Workshop on Model Checking and Software
-  Verification}.
+\newblock \showarticletitle{Model-Checking Multi-Threaded Distributed Java
+  Programs}. In {\em International Journal on Software Tools for Technology
+  Transfer}. Springer, 224--244.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Whaley and Lam}{Whaley and Lam}{}]%
+\bibitem[\protect\citeauthoryear{Whaley and Lam}{Whaley and Lam}{2004}]%
         {whaley:alias:pldi04}
-{John Whaley} {and} {Monica~S. Lam}.
-\newblock \showarticletitle{Cloning-based context-sensitive pointer alias
-  analysis using binary decision diagrams}. In {\em PLDI '04}.
+{John Whaley} {and} {Monica~S. Lam}. 2004.
+\newblock \showarticletitle{Cloning-based Context-sensitive Pointer Alias
+  Analysis Using Binary Decision Diagrams}. In {\em Proceedings of the ACM
+  SIGPLAN 2004 Conference on Programming Language Design and Implementation}
+  {\em (PLDI '04)}. ACM, New York, NY, USA, 131--144.
 \newblock
+\showISBNx{1-58113-807-5}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/996841.996859}}
 
 
 \bibitem[\protect\citeauthoryear{Xiong, Park, Zhang, Zhou, and Ma}{Xiong
-  et~al\mbox{.}}{}]%
+  et~al\mbox{.}}{2010}]%
         {xiong:adhoc:osdi10}
 {Weiwei Xiong}, {Soyeon Park}, {Jiaqi Zhang}, {Yuanyuan Zhou}, {and} {Zhiqiang
-  Ma}.
+  Ma}. 2010.
 \newblock \showarticletitle{Ad Hoc Synchronization Considered Harmful}. In {\em
-  OSDI '10}.
+  Proceedings of the 9th USENIX Conference on Operating Systems Design and
+  Implementation} {\em (OSDI'10)}. USENIX Association, Berkeley, CA, USA, 1--8.
 \newblock
+\showURL{%
+\url{http://dl.acm.org/citation.cfm?id=1924943.1924955}}
 
 
 \bibitem[\protect\citeauthoryear{Yu, Rodeheffer, and Chen}{Yu
-  et~al\mbox{.}}{}]%
+  et~al\mbox{.}}{2005}]%
         {yu:racetrack:sosp05}
-{Yuan Yu}, {Tom Rodeheffer}, {and} {Wei Chen}.
-\newblock \showarticletitle{RaceTrack: efficient detection of data race
-  conditions via adaptive tracking}. In {\em SOSP '05}.
+{Yuan Yu}, {Tom Rodeheffer}, {and} {Wei Chen}. 2005.
+\newblock \showarticletitle{RaceTrack: Efficient Detection of Data Race
+  Conditions via Adaptive Tracking}. In {\em Proceedings of the Twentieth ACM
+  Symposium on Operating Systems Principles} {\em (SOSP '05)}. ACM, New York,
+  NY, USA, 221--234.
 \newblock
+\showISBNx{1-59593-079-5}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1095810.1095832}}
 
 
 \end{thebibliography}
