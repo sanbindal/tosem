@@ -1434,6 +1434,49 @@ and {\tt IsBlockFree()} are all synchronized (i.e., protected by a monitor lock)
 that flag.}
 \end{figure}
 
+\begin{figure}[htb]
+{\small
+\begin{center}
+\begin{tabular}{@{}l@{}|@{\hspace{3ex}}@{}l@{}}
+{\tt\bf request();}                  &    \\
+{\tt\bf Await() \{}                  &    \\
+{\em first context switch}        &    {\tt\bf wait\_for\_request();} \\
+                                  &    {\tt\bf Result = x;}\\
+                                  &    {\tt\bf finished = true;}\\
+{\tt\bf ~~if(finished) \{}           &    {\em second context switch}\\
+{\tt\bf ~~~~return Result;}          &    \\
+{\tt   ~~\} else \{ }               &    \\
+{\tt   ~~~~wait();}                 &    \\
+{\tt   ~~~~return Result;}          &    \\
+{\tt   ~~\}}                        &    \\
+{\tt   \}}                          &    \\
+{\tt\bf reset();}                    &    \\
+{\tt\bf finished = false}            &    \\
+{\tt\bf request();}                  &    \\
+{\tt\bf Await() \{}                  &    \\
+{\tt\bf ~~if(finished) \{}           &    \\
+{\tt ~~~~return Result;}          &    \\
+{\tt\bf ~~\} else \{ }               &    \\
+{\tt\bf ~~~~wait();}                 &    \\
+{\em~~~~ non-preemptive context switch}&    {\tt\bf Set();} \\
+                                  &    {\tt\bf wait\_for\_request();}\\
+{\tt\bf ~~~~return Result;}          &    {\em third context switch}\\
+{\tt ~~\}}                        &    \\
+{\tt \}}                          &    \\
+{\tt // return value stored in t} &    \\
+{\tt\bf assert(t == y); !FAILS! }    &    \\
+                                  &    {\tt Result = y;}\\
+                                  &    {\tt finished = true;}\\
+                                  &    {\tt Set();}\\
+\end{tabular}
+\end{center}
+}
+\caption{\label{fig:regionownership_bug}Pseudo-code showing the $c=3,v=1,t=2$ bug
+in RegionOwnership. The routines {\tt wait\_for\_request} and {\tt request} form a 
+wait-notify pair, and so do the routines {\tt wait} and {\tt Set}. Executed statement are
+marked in bold. Some of the code surrounding the buggy trace is shown for clarity.}
+\end{figure}
+
 \begin{table}[htb]
 \begin{center}
     \scriptsize
