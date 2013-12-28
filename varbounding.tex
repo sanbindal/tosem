@@ -74,18 +74,18 @@
 
 % Title portion
 \title{Variable and Thread Bounding for Systematic Testing of Multithreaded Programs}
-\thanks{This is an extended version of a paper by the same title
-presented at ISSTA 2013.
+%\thanks{This is an extended version of a paper by the same title
+%presented at ISSTA 2013.
 %We have extended our previous paper
 %in the following ways:
 %(XXX: point to sections)
 %\begin{enumerate}
-%\item More experimental comparisons of CHESS with Rankchecker on new benchmarks.
 %\item A discussion on the effect of variable bounding on stress testing.
+%\item More experimental comparisons of CHESS with Rankchecker on new benchmarks.
 %\item A discussion on a systematic deterministic exploration algorithm for thread bounding.
 %\item A detailed discussion of the highest-depth bug we found using our tool.
 %\end{enumerate}
-}
+%}
 \author{SANDEEP BINDAL
 \affil{Indian Institute of Technology Delhi}
 SORAV BANSAL
@@ -124,7 +124,7 @@ AKASH LAL
   variable access made by a program, which can be very expensive
   and severely limits the applicability of this
   approach. Previous work \cite{musuvathi:icb:pldi07}, \cite{pct} has
-  aof voided this problem by interposing only on
+  avoided this problem by interposing only on
   synchronization operations (and ignoring other variable accesses). We demonstrate
   that by using variable bounding ($v$) and a
   static imprecise alias analysis, we can interpose on all variable
@@ -852,6 +852,30 @@ Hence the probability of uncovering the bug is the probability that we pick
 the correct priority sequence, and the probability that we choose $a_{q_b}$ as
 the lone priority change point. The former is independent of variable bounding.
 Below, we compare the latter, with and without variable bounding.
+%\ifthenelse{\boolean{ThisIsTR}}{
+\begin{figure}
+\centerline{
+\epsfig{figure=tsp.eps, width=0.5\columnwidth}
+\epsfig{figure=cache4j.eps, width=0.5\columnwidth}}
+\centerline{
+\epsfig{figure=molydn.eps, width=0.5\columnwidth}
+\epsfig{figure=montecarlo.eps, width=0.5\columnwidth}}
+\centerline{
+\epsfig{figure=sor.eps, width=0.5\columnwidth}
+\epsfig{figure=blockingqueue.eps, width=0.5\columnwidth}
+}
+\caption{%\bf \upshape \fontsize{9pt}{10pt}
+This figure plots the variable access
+frequency profile for six of our benchmarks. The
+values on the x-axis represent the frequency of access of a variable, and the y-axis plots
+the number of variables that are accessed at that frequency. For example, in {\tt tsp},
+19 variables are accessed between 0 to 100 times (first vertical bar), and only
+1 variable is accessed between 200 to 300 times. These access frequencies were determined after running
+our benchmarks multiple times on different inputs and averaging the results.}
+\label{fig:variable_frequencies}
+\end{figure}
+
+
 
 Without variable bounding, the probability of picking $a_{q_b}$ as a priority change
 point is at least
@@ -881,30 +905,6 @@ assuming all variables are equally likely to have a bug, variable bounding provi
 a tighter bound ($E2$) on the probability of finding the bug at $v=1, d=2$. A similar
 argument holds for higher values of $v$ and $d$, and we omit the discussion for
 brevity.
-
-%\ifthenelse{\boolean{ThisIsTR}}{
-\begin{figure}
-\centerline{
-\epsfig{figure=tsp.eps, width=0.5\columnwidth}
-\epsfig{figure=cache4j.eps, width=0.5\columnwidth}}
-\centerline{
-\epsfig{figure=molydn.eps, width=0.5\columnwidth}
-\epsfig{figure=montecarlo.eps, width=0.5\columnwidth}}
-\centerline{
-\epsfig{figure=sor.eps, width=0.5\columnwidth}
-\epsfig{figure=blockingqueue.eps, width=0.5\columnwidth}
-}
-\caption{%\bf \upshape \fontsize{9pt}{10pt}
-This figure plots the variable access
-frequency profile for six of our benchmarks. The
-values on the x-axis represent the frequency of access of a variable, and the y-axis plots
-the number of variables that are accessed at that frequency. For example, in {\tt tsp},
-19 variables are accessed between 0 to 100 times (first vertical bar), and only
-1 variable is accessed between 200 to 300 times. These access frequencies were determined after running
-our benchmarks multiple times on different inputs and averaging the results.}
-\label{fig:variable_frequencies}
-\end{figure}
-%}{}
 
 \section{THREAD BOUNDING}
 \label{sec:threadbound}
@@ -1100,20 +1100,60 @@ probabilistic guarantees on the absence of bugs with thread-bound less
 than $t$ after a certain number of schedules have been executed.
 
 \subsection{Systematic Exploration Algorithm}
-The number of schedules required to systematically cover all $t!$
-permutations of {\em all} $t$-sized subsets of $n$ threads at $c=0$ is
-$2\binom{n}{t-2}(t-2)!$. For example, all $3$-thread bugs can be
-uncovered by $2n$ schedules, namely
+We next discuss a deterministic algorithm to explore
+bugs in increasing order of their thread-bounds. We
+again consider the problem of finding the minimum number of permutations
+of $n$ elements required to enumerate all $t$ permutations of all $\binom{n}{t}$
+$t$-sized subsets of the $n$ elements, this time without randomization.
+
+A brute-force algorithm is to enumerate
+all $\binom{n}{t}(t)!$ permutations of all $t$-sized subsets of the $n$
+elements, and for each permutation thus generated, append the remaining
+$n-t$ elements to it in any order. This
+enumeration of $\frac{n!}{(n-t)!}$ permutations is significantly
+higher than that required for our randomized
+algorithm. Notice that there is significant redundancy in
+these enumerations as we ignore the permutation orders generated due to
+the remaining $n-t$ elements.
+
+We optimize this enumeration by noticing that $t=2$ is a very special case
+and
+as we discussed in
+Section~\ref{sec:threadbound},
+only two schedules are required to
+enumerate all $2$ permutations of all $2$-sized subsets of any $n$
+elements --- the brute-force algorithm would have required $O(n^{2})$
+enumerations. Keeping this in mind, we divide any $t$-sized subset
+into two subsets of sizes $t1$ and $t-t1$. The total number of permutations
+of all $t$ subsets of $n$ elements, can be expressed as a product of
+the number of $t1$ permutations of $n$ elements, and the number of
+$t-t1$ permutations of the remaining $n-t1$ elements, where $0 < t1 < t$.
+In other words,
+$$
+\binom{n}{t}(t)! = \binom{n}{t1}(t1)! * \binom{n-t1}{t-t1}(t-t1)!
+$$
+Using $t-t1=2$, and noticing that the expression $\binom{n-t1}{2}(2)!$ can be replaced
+by $2$ (by observing that only two permutations are required to enumerate
+both permutations of all two-sized subsets of any $n$ elements), we find that at most
+$$
+2\binom{n}{t-2}(t-2)!
+$$
+enumerations of $n$ elements are required to enumerate all $t$ permutations of all $t$-sized
+subsets of the $n$ elements. While even this involves a significant amount of overcounting,
+it is quite useful in practice, as $t$ is usually small.
+For example, at $c=0$ and $t=3$, all $3$-thread bugs can be uncovered
+by only $2n$ schedules, namely
 $\{T_{1},T_{2},\dots,T_{i-1},T_{i+1},\dots,
 T_{n-1},T_{n},T_{i}\}$ and $\{T_{n},T_{n-1},T_{n-2},\dots,T_{i+1},
 T_{i-1},\dots,T_{2},T_{1},T_{i}\}$ where $i=1$ to $n$.
 For any general $t$-thread bug, we choose $t-2$ threads out of $n$
 threads, arrange $t-2$ threads in $(t-2)!$ ways and $n-t-2$ threads
-in increasing and decreasing order. Using the same argument as described in
-section~\ref{sec:threadbound-random} for context bound $c>0$ of considering
-a pre-empted thread as two distinct threads,
-we can prove that $2\binom{n+c}{t+c-2}(t-2)!$
-permutations are required to uncover all $t$-thread bugs at context
+in increasing and decreasing order. For context-bound $c>0$,
+the same argument used
+in Section~\ref{sec:threadbound-random} of considering
+a pre-empted thread as two distinct threads is applied to show that
+$2\binom{n+c}{t+c-2}(t-2)!$
+permutations suffice to uncover all $t$-thread bugs at context
 bound $c$.
 
 \begin{algorithm}[htb]
@@ -1613,11 +1653,17 @@ proof of the bug's existence.
 %RaceFuzzer\cite{sen:racefuzzer:pldi08} and we have found 
 %the same bugs in HashSet and TreeSet as reported by RaceFuzzer.
 
-To study the effectiveness of variable and thread bounding, we ran
-Rankchecker and CHESS on the same set of contest benchmarks written
+We also compared RankChecker with CHESS directly, to study the
+effectiveness of our
+variable and thread bounding algorithms. We ran
+RankChecker and CHESS on the same set of programs from the
+ConTest benchmark suite,
+written
 in C\# and Java. Table~\ref{tab:chess_rank_results} shows the number
-of schedules explored to find the bug using CHESS and exhaustive search
-strategy in RankChecker.
+of schedules explored before the bug was found by CHESS and RankChecker.
+RankChecker used the same exhaustive and deterministic search
+strategy as CHESS, except that it was augmented with variable and thread
+bounding.
 
 \begin{table}[htb]
 \begin{center}
@@ -1626,8 +1672,8 @@ strategy in RankChecker.
 
 \tbl{The different columns in this table represents 
 the name of the program, the number of schedules explored by
-CHESS and sytematic strategy of RankChecker before finding
-the bug and ($c$,$v$,$t$) at which bug is triggered.
+CHESS and the systematic strategy of RankChecker before finding
+the bug and the ($c$,$v$,$t$) value at which bug was found.
 \label{tab:chess_rank_results}}{
 
 \begin{tabular}{l|r|r|r}
@@ -1639,7 +1685,7 @@ the bug and ($c$,$v$,$t$) at which bug is triggered.
     \hline
     Clean & 6  & 6 & (1,$v_{tot}$,2) \\
     \hline
-    LinkedList & 23000 & 29 & (29,$v_{tot}$,2) \\
+    LinkedList & 23000 & 29 & (1,$v_{tot}$,2) \\
     \hline
     Reorder & 69000 & 31 & (1,$v_{tot}$,2) \\
     \hline
