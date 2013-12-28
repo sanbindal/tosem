@@ -1529,7 +1529,7 @@ that flag.}
 }
 \caption{\label{fig:regionownership_bug}Pseudo-code showing the $c=3,v=1,t=2$ bug
 in RegionOwnership. The routines {\tt wait\_for\_request} and {\tt request} form a 
-wait-notify pair, and so do the routines {\tt wait} and {\tt Set}. Executed statement are
+wait-notify pair, and so do the routines {\tt wait} and {\tt Set}. Executed statements are
 marked in bold. Some of the code surrounding the buggy trace is shown for clarity.}
 \end{figure}
 
@@ -1759,7 +1759,9 @@ pre-emptions ($v+1^\text{th}$ to $c^\text{th}$) are constrained to occur only af
 these $v$ variables. In other words,
 the $v$ variables for variable bounding are chosen dynamically.
 
-The deepest reported bug found using CHESS is in a program called {\tt RegionOwnership}. It is a C\# library
+The deepest reported bug found using CHESS is in a program
+called {\tt RegionOwnership}, shown in Figure~\ref{fig:regionownership_bug}. It
+is a C\# library
 that manages concurrency and coordination for objects communicating via asynchronous procedure
 calls. The library is accompanied by a single test case comprising of a
 one-producer one-consumer system. The library is $1500$ lines of code, and an execution access a synchronization
