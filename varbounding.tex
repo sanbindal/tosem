@@ -1444,22 +1444,22 @@ bugs. The last program ({\tt RegionOwnership}) is a C\# program containing a
 reasonably complex concurrency bug. This program has been previously analyzed using
 CHESS \cite{EmmiQR11}.
 As we discuss later, we have also implemented
-variable and thread bounding in the CHESS tool to test C\# programs. We report our
-experiences with variable bounding on the {\tt RegionOwnership} benchmark.
+variable and thread bounding options in CHESS for testing C\# programs, and we report our
+experience on the {\tt RegionOwnership} benchmark.
 Within a variable and thread bound, we further rank our schedules
 based on the loop iteration number (recall Section~\ref{sec:varbound}).
 For exhaustive search experiments, while choosing our variable set, we give
 priority to shared variables. i.e., variables known to be shared are chosen
 before
 other variables. A variable is known to be shared if in one of the preparatory runs,
-we found a variable being accessed by at least two threads.
+it was accessed by at least two threads.
 
 We ran RankChecker on the programs containing known bugs
 with variable bounding to check the
 bug characteristics. Table~\ref{tab:benchmarks} lists the $(c,v,t)$ values at
 which these bugs were uncovered using the exhaustive algorithm. We found that
 all of these bugs were $c\leq2,v\leq2,t=2$ bugs. We surveyed past
-papers on studying concurrency
+papers that study concurrency
 bugs and also inspected many bugs reported in bug databases of popular
 applications.
 We found that all of these bugs
@@ -1612,9 +1612,9 @@ the number of schedules explored until we found the first bug and tuple $(c,v,t)
   \end{center}
 \end{table}
 
-We next discuss the improvements in running time due to variable bounding.
-Table~\ref{tab:pref_results} shows our results on some of our Java programs. The
-other Java programs were too small to show any meaningful improvements. The runtime
+We now discuss the improvements in running time due to variable bounding.
+Table~\ref{tab:pref_results} shows our results on a subset of the Java programs (others
+were too small to show any meaningful improvements). The runtime
 statistics have been averaged over several runs of the programs.
 With variable bounding, there is up to 100x improvement in the runtime cost of
 instrumentation. The runtime improvement depends on the proportion
@@ -1631,14 +1631,14 @@ as potential pre-emptions points. (The native run is
 sometimes slower than the instrumented run; this happens due to the
 overhead of process creation in the native run which does not
 exist in our instrumented run.). This is a significant improvement over
-previous work, where only synchronization operations have been considered as
+previous work, where only synchronization operations were considered as
 potential pre-emption points~\cite{chess}\cite{pct}.
 \begin{table}
 \begin{center}
 \scriptsize
 \setlength{\tabcolsep}{2pt}
-\tbl{The different columns in this table represents 
-the name of the program, the (average) number of byte code instructions executed by the program, total number of different instrumentation sites, 
+\tbl{The different columns in this table represent 
+the name of the program, the (average) number of byte code instructions executed by the program, total number of instrumentation sites, 
 which includes heap-allocation statements and global variables, total number of accesses, native execution time, the average amount of time 
 taken for one execution when we are tracking 0, 1, 2, and all variables, respectively, and the last column represents the ratio of the v-$all$ and v$1$ columns.\label{tab:pref_results}}{
 
@@ -1679,7 +1679,7 @@ inspection, we found that the bug did not exist.
 It turned out that RaceFuzzer had generated a false bug report
 due to an error in
 the modelling of the semantics of the Java interrupt exception in the tool. We
-reported this to the author of RaceFuzzer~\cite{sen:racefuzzer:pldi08}, and he
+reported this to an author of RaceFuzzer~\cite{sen:racefuzzer:pldi08} and he
 did not object to our findings.
 Because RankChecker
 actually runs a schedule to try and trigger assertion failures,
@@ -1744,7 +1744,7 @@ the bug and the ($c$,$v$,$t$) value at which bug was found.
 
 We further validated the effectiveness of variable and thread
 bounding in practice by implementing
-it inside CHESS\cite{chess} and testing it on C\# benchmarks that were
+it inside CHESS \cite{chess} and testing it on C\# benchmarks that were
 previously
 used with CHESS \cite{EmmiQR11}. However, we did not have an alias analysis
 readily available for
@@ -1795,7 +1795,7 @@ but Table~\ref{tab:vb-chess} shows a further reduction in search space when this
 \end{table}
 
 \subsection{Variable and Thread Bounding in Randomized Algorithms}
-All the bugs found in our test programs, except {\tt RegionOwnership}, were of type $v\leq1$.
+All bugs found in our test programs, except {\tt RegionOwnership}, were of type $v\leq1$.
 As seen in Tables~\ref{tab:pref_results}~and~\ref{tab:vb-chess}, variable
 bounding improves both runtime and the number of schedules explored while
 systematically testing concurrent programs. To further study the effect
@@ -1848,10 +1848,10 @@ finding the bug.\label{tab:montecarloresults}}{
 
 \subsection{Search Space Growth with Variable Bounding}
 We performed experiments to study the growth of search space using
-variable bounding. We wrote a small toy program as shown in
-figure~\ref{fig:account-prog} which spawns 11 threads
-and in total has 23 variables and, ran it with the implementation of
-variable bounding in CHESS.
+variable bounding. We wrote a small toy program, shown in
+figure~\ref{fig:account-prog}, which spawns 11 threads
+with a total of 23 shared variables, and tested it with 
+variable-bounding-enabled CHESS.
 Figure~\ref{fig:search} shows the growth of
 search space with the increasing values of context bound and variable bound.
 
@@ -1925,7 +1925,7 @@ this (apart from plain inertia):
     yet others target only deadlocks. It is confusing for a developer to
     understand the function of each tool and apply them separately.
   \item Many tools have false positives. Spending time and energy on
-    a false-positive bug report is annoying and counter-productive.
+    a false-positive bug report is counter-productive as well as annoying.
   \item Many tools require source-level annotations. Many tools rely on
     certain programming disciplines. e.g., all shared memory accesses
     must be protected by a lock. At places where the programmer deliberately
@@ -1997,14 +1997,14 @@ atomicity-violation bugs.
 \section{CONCLUSION}
 \label{sec:conclusion}
 We present variable and thread bounding to rank thread schedules for
-systematic testing of concurrent programs. Through experiments on a
-variety of Java and C\# programs, we find that the ranking significantly
+systematic testing of concurrent programs. Experiments on a
+variety of Java and C\# programs reveals that this ranking significantly
 aids early discovery of common bugs.
 
 %\ifthenelse{\boolean{ThisIsTR}}{
 %\section{ACKNOWLEDGEMENTS}
 \begin{acks}
-We thank Sandeep Sen (I.I.T. Delhi) for
+We thank Sandeep Sen (IIT Delhi) for
 graciously giving us Lemma~\ref{lemma:permutations}
 and its proof. The first two authors acknowledge
 partial support from NetApp's research grant.
