@@ -19,12 +19,22 @@ namespace StressTesting
 
         static void Main(string[] args)
         {
+            ExperimentIJ(args);
+        }
+
+        static void ExperimentIJK(string[] args)
+        {
             ProgramState.rand = new Random(DateTime.Now.Millisecond);
 
             var max = 10000;
 
             var K = 10000;
-            var f = 0.1;
+            float f = 0;
+            foreach(var s in args) 
+                float.TryParse(s, out f);
+            if (f == 0) f = 0.1F;
+            //Console.WriteLine("using f = {0}", f);
+
             var start = DateTime.Now;
             for (int a = 0; a < 5000; a++)
             {
@@ -62,19 +72,23 @@ namespace StressTesting
 
         }
 
-        static void ExperimentIJ()
+        static void ExperimentIJ(string [] args)
         {
             ProgramState.rand = new Random(DateTime.Now.Millisecond);
 
             var max = 10000;
 
             var K = 10000;
-            var f = 0.1;
+            float f = 0;
+            foreach (var s in args)
+                float.TryParse(s, out f);
+            if (f == 0) f = 0.1F;
+
             var start = DateTime.Now;
-            for (int a = 0; a < 1000; a++)
+            for (int a = 0; a < 5000; a++)
             {
+                var i = ProgramState.rand.Next(K);
                 var j = ProgramState.rand.Next(K);
-                var i = j + ProgramState.rand.Next(K - j);
 
                 var cnt = 0;
                 for (int c = 0; c < max; c++)
@@ -83,7 +97,7 @@ namespace StressTesting
                     if (r) cnt++;
                 }
 
-                Console.WriteLine("{0} {1} {2} {3}", i, j, K, (float)cnt / max * 100);
+                var p1 = (float)cnt / max * 100;
 
                 cnt = 0;
                 for (int c = 0; c < max; c++)
@@ -92,8 +106,12 @@ namespace StressTesting
                     if (r) cnt++;
                 }
 
-                Console.WriteLine("{0} {1} {2} {3}", (int)(f * i), (int)(f * j), (int)(f * K), (float)cnt / max * 100);
-                Console.Error.WriteLine("{0} {1}", a, (DateTime.Now - start).TotalSeconds);
+                var p2 = (float)cnt / max * 100;
+
+                Console.WriteLine("{0} {1} {2} {3} {4}", i, j, K, p1, p2);
+
+                //Console.WriteLine("{0} {1} {2} {3}", (int)(f * i), (int)(f * j), (int)(f * K), (float)cnt / max * 100);
+                //Console.Error.WriteLine("{0} {1}", a, (DateTime.Now - start).TotalSeconds);
             }
         }
 
