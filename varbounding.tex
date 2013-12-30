@@ -906,6 +906,23 @@ a tighter bound ($E2$) on the probability of finding the bug at $v=1, d=2$. A si
 argument holds for higher values of $v$ and $d$, and we omit the discussion for
 brevity.
 
+%\subsection{Discussion}
+%A randomized testing procedure samples from an otherwise
+%impractically huge space of possible execution
+%schedules.
+%So far, we have focussed on the advantages of
+%variable bounding in its 
+%one such testing algorithm, namely PCT. Variable bounding is attractive
+%for two reasons: firstly it prioritizes schedules based on the number of variables
+%involved in the 
+%
+%We next discuss the effect of variable bounding on other randomized testing algorithms
+%that do not necessarily provide probabilistic guarantees on finding bugs.
+%
+%Repeated
+%random testing with a realistic scheduler, also called stress testing, is
+%a popular testing method. We show
+
 \section{THREAD BOUNDING}
 \label{sec:threadbound}
 Previous work on studying concurrency bugs found that most concurrency bugs can be
@@ -1495,7 +1512,7 @@ that flag.}
 \begin{center}
 \begin{tabular}{@{}l@{}|@{\hspace{3ex}}@{}l@{}}
 {\tt\bf request();}                  &    \\
-{\tt\bf Await() \{}                  &    \\
+{\tt\bf t = GrabResult() \{}                  &    \\
 {\em first context switch}        &    {\tt\bf wait\_for\_request();} \\
                                   &    {\tt\bf Result = x;}\\
                                   &    {\tt\bf finished = true;}\\
@@ -1509,7 +1526,7 @@ that flag.}
 {\tt\bf reset();}                    &    \\
 {\tt\bf finished = false}            &    \\
 {\tt\bf request();}                  &    \\
-{\tt\bf Await() \{}                  &    \\
+{\tt\bf t = GrabResult() \{}                  &    \\
 {\tt\bf ~~if(finished) \{}           &    \\
 {\tt ~~~~return Result;}          &    \\
 {\tt\bf ~~\} else \{ }               &    \\
@@ -1527,7 +1544,7 @@ that flag.}
 \end{tabular}
 \end{center}
 }
-\caption{\label{fig:regionownership_bug}Pseudo-code showing the $c=3,v=1,t=2$ bug
+\caption{\label{fig:regionownership_bug}Pseudo-code showing the $c=3,v=2,t=2$ bug
 in RegionOwnership. The routines {\tt wait\_for\_request} and {\tt request} form a 
 wait-notify pair, and so do the routines {\tt wait} and {\tt Set}. Executed statements are
 marked in bold. Some of the code surrounding the buggy trace is shown for clarity.}
