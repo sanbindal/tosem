@@ -1120,7 +1120,7 @@ than $t$ after a certain number of schedules have been executed.
 We next discuss a deterministic algorithm to explore
 bugs in increasing order of their thread-bounds. We
 again consider the problem of finding the minimum number of permutations
-of $n$ elements required to enumerate all $t$ permutations of all $\binom{n}{t}$
+of $n$ elements required to enumerate all $t!$ permutations of all $\binom{n}{t}$
 $t$-sized subsets of the $n$ elements, this time without randomization.
 
 A brute-force algorithm is to enumerate
@@ -1507,49 +1507,6 @@ and {\tt IsBlockFree()} are all synchronized (i.e., protected by a monitor lock)
 that flag.}
 \end{figure}
 
-\begin{figure}[htb]
-{\small
-\begin{center}
-\begin{tabular}{@{}l@{}|@{\hspace{3ex}}@{}l@{}}
-{\tt\bf request();}                  &    \\
-{\tt\bf t = GrabResult() \{}                  &    \\
-{\em first context switch}        &    {\tt\bf wait\_for\_request();} \\
-                                  &    {\tt\bf Result = x;}\\
-                                  &    {\tt\bf finished = true;}\\
-{\tt\bf ~~if(finished) \{}           &    {\em second context switch}\\
-{\tt\bf ~~~~return Result;}          &    \\
-{\tt   ~~\} else \{ }               &    \\
-{\tt   ~~~~wait();}                 &    \\
-{\tt   ~~~~return Result;}          &    \\
-{\tt   ~~\}}                        &    \\
-{\tt   \}}                          &    \\
-{\tt\bf reset();}                    &    \\
-{\tt\bf finished = false}            &    \\
-{\tt\bf request();}                  &    \\
-{\tt\bf t = GrabResult() \{}                  &    \\
-{\tt\bf ~~if(finished) \{}           &    \\
-{\tt ~~~~return Result;}          &    \\
-{\tt\bf ~~\} else \{ }               &    \\
-{\tt\bf ~~~~wait();}                 &    \\
-{\em~~~~ non-preemptive context switch}&    {\tt\bf Set();} \\
-                                  &    {\tt\bf wait\_for\_request();}\\
-{\tt\bf ~~~~return Result;}          &    {\em third context switch}\\
-{\tt ~~\}}                        &    \\
-{\tt \}}                          &    \\
-{\tt // return value stored in t} &    \\
-{\tt\bf assert(t == y); !FAILS! }    &    \\
-                                  &    {\tt Result = y;}\\
-                                  &    {\tt finished = true;}\\
-                                  &    {\tt Set();}\\
-\end{tabular}
-\end{center}
-}
-\caption{\label{fig:regionownership_bug}Pseudo-code showing the $c=3,v=2,t=2$ bug
-in RegionOwnership. The routines {\tt wait\_for\_request} and {\tt request} form a 
-wait-notify pair, and so do the routines {\tt wait} and {\tt Set}. Executed statements are
-marked in bold. Some of the code surrounding the buggy trace is shown for clarity.}
-\end{figure}
-
 \begin{table}[htb]
 \begin{center}
     \scriptsize
@@ -1757,6 +1714,50 @@ the bug and the ($c$,$v$,$t$) value at which bug was found.
 \end{center}
 \end{table}
 
+
+
+\begin{figure}[htb]
+{\small
+\begin{center}
+\begin{tabular}{@{}l@{}|@{\hspace{3ex}}@{}l@{}}
+{\tt\bf c1.notify();}                  &    \\
+{\em first context switch}        &    {\tt\bf c1.wait();} \\
+                                  &    {\tt\bf Result = x;}\\
+                                  &    {\tt\bf finished = true;}\\
+{\tt\bf t1 = GrabResult() \{}       &    {\em second context switch}\\
+{\tt\bf ~~if(finished) \{}           &    \\
+{\tt\bf ~~~~return Result;}          &    \\
+{\tt   ~~\} else \{ }               &    \\
+{\tt   ~~~~c2.wait(); // A}                 &    \\
+{\tt   ~~~~return Result;}          &    \\
+{\tt   ~~\}}                        &    \\
+{\tt   \}}                          &    \\
+{\tt\bf c2.reset(); // B }             &    \\
+{\tt\bf finished = false}            &    \\
+{\tt\bf c1.notify();}                  &    \\
+{\tt\bf t = GrabResult() \{}                  &    \\
+{\tt\bf ~~if(finished) \{}           &    \\
+{\tt ~~~~return Result;}          &    \\
+{\tt\bf ~~\} else \{ }               &    \\
+{\tt\bf ~~~~c2.wait(); // C }            &    \\
+{\em~~~~ non-preemptive context switch}&    {\tt\bf c2.notify(); // D} \\
+                                  &    {\tt\bf c1.wait();}\\
+{\tt\bf ~~~~return Result;}          &    {\em third context switch}\\
+{\tt ~~\}}                        &    \\
+{\tt \}}                          &    \\
+{\tt\bf assert(t2 == t1 + 1); !FAILS! }    &    \\
+                                  &    {\tt Result = x+1;}\\
+                                  &    {\tt finished = true;}\\
+                                  &    {\tt c2.notify(); // E}\\
+\end{tabular}
+\end{center}
+}
+\caption{\label{fig:regionownership_bug}Pseudo-code showing the $c=3,v=2,t=2$ bug
+in RegionOwnership. 
+Executed statements are
+marked in bold. Some of the code surrounding the buggy trace is shown for clarity.}
+\end{figure}
+
 \subsection{Variable and Thread Bounding in CHESS}
 
 We further validated the effectiveness of variable and thread
@@ -1784,11 +1785,33 @@ calls. The library is accompanied by a single test case comprising of a
 one-producer one-consumer system. The library is $1500$ lines of code, and an execution access a synchronization
 variable at most $280$ times. The test reveals a bug that requires at least $3$ pre-emptions. 
 
+\subsubsection*{Bug description} Figure~\ref{fig:regionownership_bug} shows the $c = 3, v = 2, t = 2$ bug
+in {\tt RegionOwnership}.\footnote{We have changed identifier names from the original program for clarity.}
+The second thread does some computation and stores the result in the shared variable {\tt Result}.
+The first thread calls the procedure {\tt GrabResult} twice to consume the result from {\tt Result} and expects a
+certain invariant to hold between the two values (denoted by the assertion towards the end of the first thread).
+
+The bug requires three context switches. First, notice that 
+the {\tt wait} on line C was intended to match with the {\tt notify} on line E, but 
+the bug happens because C ends up matching with the {\tt notify} on line D. 
+Let us now start reasoning from the beginning of the trace.
+It must be that the first thread starts because it sends the initial notification (via {\tt c1}), but it must
+context switch before executing line A (otherwise C will not match with D because D will match with A). After the
+first context switch, the second thread starts executing but it must context switch before executing D because the
+first thread must execute B first (otherwise B will clear D's notification). The third context switch is necessary so
+that {\tt Result} still has a stale value and the assertion in the first thread fails.
+
+Also, note that the trace requires a variable bound of $2$; it only preempts at access to {\tt c1} and
+{\tt finished}.
+
 Table~\ref{tab:vb-chess} shows the number of executions and time taken before VT-CHESS either reported a bug
 or finished exploring all behaviors under the given bound. We used $c=3,t=2$ in all invocations of VT-CHESS.
 VT-CHESS was able to find the bug about $6$ times 
 faster then CHESS while using a variable bound of $2$. Using a variable bound of $1$ does not expose the bug, 
-but Table~\ref{tab:vb-chess} shows a further reduction in search space when this bound is imposed.
+but Table~\ref{tab:vb-chess} shows a further reduction in search space when this bound is imposed. The condition
+variables {\tt c1} and {\tt c2} are used for synchronization. These objects support a {\tt wait}-{\tt notify}-{\tt reset} 
+API in the usual sense (the {\tt reset} call clears any previous notification on the condition variable).
+
 
 \begin{table}[htb]
 \begin{center}
