@@ -1469,7 +1469,10 @@ For exhaustive search experiments, while choosing our variable set, we give
 priority to shared variables. i.e., variables known to be shared are chosen
 before
 other variables. A variable is known to be shared if in one of the preparatory runs,
-it was accessed by at least two threads.
+it was accessed by at least two threads. We tested both randomized and
+deterministic algorithms for thread bounding; because most bugs had
+small thread-bounds, both algorithms resulted in similar
+results.
 
 We ran RankChecker on the programs containing known bugs
 with variable bounding to check the
